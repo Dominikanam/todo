@@ -4,10 +4,10 @@
   "description": "kodilla todo",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "npm run watch",
+	"start": "webpack --env development",
     "test": "npm-run-all test:*",
     "test:html": "globstar nu-html-checker *.html",
-    "build": "npm-run-all build:* test",
+    "build": "webpack",
     "build:webpack": "webpack",
     "watch": "npm run build && npm-run-all -p watch:*",
     "watch:browsersync": "browser-sync start --server --watch --files '*.css' '*.html' '*.js' '*.jsx'"
