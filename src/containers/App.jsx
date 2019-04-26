@@ -4,8 +4,9 @@ import style from './App.css';
 import Title from '../components/Title.jsx';
 import TodoList from '../components/TodoList.jsx';
 import todos from '../data/todoList';
+import { hot } from 'react-hot-loader';
 
-export default class App extends PureComponent {
+class App extends PureComponent {
     constructor(props){
         super(props);
 
@@ -39,3 +40,5 @@ export default class App extends PureComponent {
 		);
 	}
 }
+
+export default hot(module)(App);
