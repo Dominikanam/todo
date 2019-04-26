@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import uuid from 'uuid';
 import style from './App.css';
 import Title from '../components/Title.jsx';
+import TodoList from '../components/TodoList.jsx';
+import todos from '../data/todoList';
 
-export default class App extends Component {
+export default class App extends PureComponent {
     constructor(props){
         super(props);
 
 		this.state = {
-            data: []
-        };
+            data: todos
+		};
+
+		this.removeTodo = this.removeTodo.bind(this);
     }
 
 	addTodo(val){
@@ -29,8 +33,8 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className={style.TodoApp}>
-				<Title title={`Todo: ${this.state.data.length}`} />
-				Tutaj pojawią się komponenty naszej aplikacji.
+				<Title title={`To do: ${this.state.data.length}`} />
+				<TodoList todos={this.state.data} remove={this.removeTodo} />
 			</div>
 		);
 	}
