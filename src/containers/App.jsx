@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import uuid from 'uuid';
-import style from './App.css';
+import { hot } from 'react-hot-loader';
 import Title from '../components/Title.jsx';
 import TodoList from '../components/TodoList.jsx';
+import TodoForm from '../components/TodoForm.jsx';
 import todos from '../data/todoList';
-import { hot } from 'react-hot-loader';
+import style from './App.css';
 
 class App extends PureComponent {
     constructor(props){
@@ -15,6 +16,7 @@ class App extends PureComponent {
 		};
 
 		this.removeTodo = this.removeTodo.bind(this);
+		this.addTodo = this.addTodo.bind(this);
     }
 
 	addTodo(val){
@@ -36,6 +38,7 @@ class App extends PureComponent {
 			<div className={style.TodoApp}>
 				<Title title={`To do: ${this.state.data.length}`} />
 				<TodoList todos={this.state.data} remove={this.removeTodo} />
+				<TodoForm onAdd={this.addTodo} />
 			</div>
 		);
 	}
